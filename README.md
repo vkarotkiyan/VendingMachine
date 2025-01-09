@@ -1,2 +1,2 @@
 # cpp_study
-Repository for study C++
+Repository for study C++ | VendingMachine
