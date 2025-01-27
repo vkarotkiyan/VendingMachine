@@ -32,12 +32,12 @@ double Snack::getPrice() const
 }
 void Snack::showSnackInfo() const
 {
-	cout << name << " - Êîëè÷åñòâî êàëîðèé: " << caloriesNumber << ", Öåíà: " << price << endl;
+	cout << name << " - ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ°Ð»Ð¾Ñ€Ð¸Ð¹: " << caloriesNumber << ", Ð¦ÐµÐ½Ð°: " << price << endl;
 }
 void Snack::showSnackInfoAll() const
 {
-	cout << name << " - Êîëè÷åñòâî êàëîðèé: " << caloriesNumber 
-		 << ", Ñðîê õðàíåíèÿ: " << expirationDate << ", Öåíà: " << price << endl;
+	cout << name << " - ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÐºÐ°Ð»Ð¾Ñ€Ð¸Ð¹: " << caloriesNumber 
+		 << ", Ð¡Ñ€Ð¾Ðº Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ: " << expirationDate << ", Ð¦ÐµÐ½Ð°: " << price << endl;
 }
 
 // SnakSlot ///////////////////////////////////////////////////////////////////
@@ -79,8 +79,8 @@ double SnackSlot::buySnack()
 	{
 		double price;
 		system("cls");
-		cout << endl << "Ïîêóïàåì " << this->p_snack[snackCount-1]->getName() << endl;
-		cout << "Îïëàòèòå " << this->p_snack[snackCount-1]->getPrice() << ": ";
+		cout << endl << "ÐŸÐ¾ÐºÑƒÐ¿Ð°ÐµÐ¼ " << this->p_snack[snackCount-1]->getName() << endl;
+		cout << "ÐžÐ¿Ð»Ð°Ñ‚Ð¸Ñ‚Ðµ " << this->p_snack[snackCount-1]->getPrice() << ": ";
 		cin >> price;
 		if (price >= this->p_snack[snackCount-1]->getPrice()) {
 			snackCount--;
@@ -90,14 +90,14 @@ double SnackSlot::buySnack()
 		else 
 		{
 			system("cls");
-			cout << "Íåäîñòàòî÷íî ñðåäñòâ. Îïëàòèòå âñþ ñóììó.";
+			cout << "ÐÐµÐ´Ð¾ÑÑ‚Ð°Ñ‚Ð¾Ñ‡Ð½Ð¾ ÑÑ€ÐµÐ´ÑÑ‚Ð². ÐžÐ¿Ð»Ð°Ñ‚Ð¸Ñ‚Ðµ Ð²ÑÑŽ ÑÑƒÐ¼Ð¼Ñƒ.";
 			return 0;
 		}
 	}
 	else
 	{
 		system("cls");
-		cout << endl << "Òîâàð ðàñïðîäàí. Âûáåðèòå äðóãîé òîâàð...";
+		cout << endl << "Ð¢Ð¾Ð²Ð°Ñ€ Ñ€Ð°ÑÐ¿Ñ€Ð¾Ð´Ð°Ð½. Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð´Ñ€ÑƒÐ³Ð¾Ð¹ Ñ‚Ð¾Ð²Ð°Ñ€...";
 	}
 }
 void SnackSlot::slotInfo()

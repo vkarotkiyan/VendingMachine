@@ -1,24 +1,25 @@
 #include "classes.h"
 #include <iostream>
 #include <string>
-//#include <ctime>
 #include <conio.h>
+#include <windows.h> // Р—Р°РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ РґР»СЏ Linux
 using namespace  std;
 
-const string code = { "123" }; //Код для входа в сервисное меню
+const string code = { "123" }; //РљРѕРґ РґР»СЏ РІС…РѕРґР° РІ СЃРµСЂРІРёСЃРЅРѕРµ РјРµРЅСЋ
 
 int main(int argc, char* argv[])
 {
-    setlocale(LC_ALL, "");
+    SetConsoleOutputCP( 65001 ); // Р—Р°РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ РґР»СЏ Linux
+    //setlocale(LC_ALL, ""); // Р—Р°РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ РґР»СЏ Windows
     string vcode = { "000" };
     char oper = '0';
 
-    //Первичная инициализация аппарата
+    //РџРµСЂРІРёС‡РЅР°СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Р°РїРїР°СЂР°С‚Р°
     VendingMachine* machine = new VendingMachine();
     CashRegister* cash = new CashRegister();
-    Snack* bounty = new Snack("Баунти", 250, 300, 10);
-    Snack* snickers = new Snack("Сникерс", 235, 340, 11);
-    Snack* mars = new Snack("Марс", 220, 315, 12);
+    Snack* bounty = new Snack("Р‘Р°СѓРЅС‚Рё", 250, 300, 10);
+    Snack* snickers = new Snack("РЎРЅРёРєРµСЂСЃ", 235, 340, 11);
+    Snack* mars = new Snack("РњР°СЂСЃ", 220, 315, 12);
     SnackSlot* slot1 = new SnackSlot();
     SnackSlot* slot2 = new SnackSlot();
     SnackSlot* slot3 = new SnackSlot();
@@ -33,64 +34,64 @@ int main(int argc, char* argv[])
     {
         if (code != vcode)
         {
-            cout << endl << "В наличии:" << endl;
+            cout << endl << "Р’ РЅР°Р»РёС‡РёРё:" << endl;
             if (slot1->getSnackCount() != 0) bounty->showSnackInfo();
             if (slot2->getSnackCount() != 0) snickers->showSnackInfo();
             if (slot3->getSnackCount() != 0) mars->showSnackInfo();
-            cout << endl << "Введите '1' для покупки Баунти, '2' для покупки Сникерса, '3' для покупки Марса, " << endl;
-            cout << "        's' для входа в сервисное меню: ";
+            cout << endl << "Р’РІРµРґРёС‚Рµ '1' РґР»СЏ РїРѕРєСѓРїРєРё Р‘Р°СѓРЅС‚Рё, '2' РґР»СЏ РїРѕРєСѓРїРєРё РЎРЅРёРєРµСЂСЃР°, '3' РґР»СЏ РїРѕРєСѓРїРєРё РњР°СЂСЃР°, " << endl;
+            cout << "        's' РґР»СЏ РІС…РѕРґР° РІ СЃРµСЂРІРёСЃРЅРѕРµ РјРµРЅСЋ: ";
             oper = _getch();
         }
         else if (code == vcode)
         {
-            cout << "Выручка: " << cash->getCurrentBalance() << endl;
-            cout << "Количество слотов: " << machine->getSlotCount() << endl;
-            cout << "Количество пустых слотов: " << machine->getEmptySlotsCount() << endl;
-            cout << "Количество снеков " << bounty->getName() << ": " << slot1->getSnackCount() << endl;
-            cout << "Количество снеков " << snickers->getName() << ": " << slot2->getSnackCount() << endl;
-            cout << "Количество снеков " << mars->getName() << ": " << slot3->getSnackCount() << endl;
+            cout << "Р’С‹СЂСѓС‡РєР°: " << cash->getCurrentBalance() << endl;
+            cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃР»РѕС‚РѕРІ: " << machine->getSlotCount() << endl;
+            cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РїСѓСЃС‚С‹С… СЃР»РѕС‚РѕРІ: " << machine->getEmptySlotsCount() << endl;
+            cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРЅРµРєРѕРІ " << bounty->getName() << ": " << slot1->getSnackCount() << endl;
+            cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРЅРµРєРѕРІ " << snickers->getName() << ": " << slot2->getSnackCount() << endl;
+            cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРЅРµРєРѕРІ " << mars->getName() << ": " << slot3->getSnackCount() << endl;
             //slot1->slotInfo();
             //slot2->slotInfo();
             //slot3->slotInfo();
-            cout << endl << "Введите 'i' для заполнения аппарата товаром, ";
-            cout << endl << "'b' для возврата в пользовательское меню, 'q' для выхода: ";
+            cout << endl << "Р’РІРµРґРёС‚Рµ 'i' РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ Р°РїРїР°СЂР°С‚Р° С‚РѕРІР°СЂРѕРј, ";
+            cout << endl << "'b' РґР»СЏ РІРѕР·РІСЂР°С‚Р° РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ, 'q' РґР»СЏ РІС‹С…РѕРґР°: ";
             oper = _getch();
         }
         if (oper == 's')
         {
-            cout << endl << "Введите код: ";
+            cout << endl << "Р’РІРµРґРёС‚Рµ РєРѕРґ: ";
             cin >> vcode;
             system("cls");
         }
         if (oper == 'q' && code == vcode)
         {
-            cout << "Завершение работы.\n";
+            cout << "Р—Р°РІРµСЂС€РµРЅРёРµ СЂР°Р±РѕС‚С‹.\n";
             break;
         }
         switch (oper) //
         {
-        case '1': // Покупка Баунти
+        case '1': // РџРѕРєСѓРїРєР° Р‘Р°СѓРЅС‚Рё
             cash->acceptAmount(slot1->buySnack());
             break;
-        case '2': //Покупка Сникерса
+        case '2': //РџРѕРєСѓРїРєР° РЎРЅРёРєРµСЂСЃР°
             cash->acceptAmount(slot2->buySnack());
             break;
-        case '3': //Покупка Марса
+        case '3': //РџРѕРєСѓРїРєР° РњР°СЂСЃР°
             cash->acceptAmount(slot3->buySnack());
             break;
-        case 'i': // Загрузка недостающего товара
+        case 'i': // Р—Р°РіСЂСѓР·РєР° РЅРµРґРѕСЃС‚Р°СЋС‰РµРіРѕ С‚РѕРІР°СЂР°
             slot1->initSlot(bounty);
             slot2->initSlot(snickers);
             slot3->initSlot(mars);
             system("cls");
             break;
-        case 'b': //Возврат в пользовательское меню
+        case 'b': //Р’РѕР·РІСЂР°С‚ РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ
             vcode = { "000" };
             system("cls");
             break;
         default:
             system("cls");
-            if (vcode != code) cout << endl << "Вы ввели неправильный символ." << endl;
+            if (vcode != code) cout << endl << "Р’С‹ РІРІРµР»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ СЃРёРјРІРѕР»." << endl;
             break;
         }
     }

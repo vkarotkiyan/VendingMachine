@@ -8,7 +8,7 @@ public:
 	Snack() = default;
 	Snack(std::string, double, int, int);
 	~Snack() = default;
-	Snack(const Snack&); // Ссылка на копию?
+	Snack(const Snack&); // РЎСЃС‹Р»РєР° РЅР° РєРѕРїРёСЋ?
 	void setName(std::string);
 	std::string getName() const;
 	double getPrice() const;
